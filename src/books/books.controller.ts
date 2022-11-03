@@ -8,7 +8,7 @@ import { UpdateBookDto } from './dto/update-book.dto';
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
-  @Get(':term')
+  @Get('find/:term')
   findByAutor( @Param('term') term: string) {
     return this.booksService.findByAutor(term)
   }
