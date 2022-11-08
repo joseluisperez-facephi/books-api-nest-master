@@ -58,26 +58,29 @@ export class BooksService {
 
     async findOne(term: string) {
 
-    let Book: Book;
 
-    if ( isUUID(term) ) {
+      let Book: Book;
 
-      Book = await this.bookRepository.findOneBy( {id: term })
-    } else {
+     if ( isUUID(term) ) {
+
+      Book = await this.bookRepository.findOneBy( {id: term }); 
+     } else {
+      Book = await this.bookRepository.findOneBy( { autor: term }); 
+
       const queryBuilder = this.bookRepository.createQueryBuilder();
 
       Book = await queryBuilder
       .where('UPPER(titulo)=: titulo or autor=: autor',{
         titulo: term.toUpperCase(),
         autor: term.toLowerCase(),
-      }).getOne();
+        }).getOne();
 
-    }
+     }
 
-    if ( !Book )
-    throw new NotFoundException(`El producto con el id ${ term } no ha sido encontrado`);
+     if ( !Book )
+     throw new NotFoundException(`El producto con el id ${ term } no ha sido encontrado`);
 
-    return Book;
+     return  Book;
   }
 
 
@@ -86,7 +89,8 @@ export class BooksService {
     async findByAutor( term: string) :Promise<Book[]>{
 
     const book = await this.bookRepository.find( {
-    where: { 
+      where: { 
+      
       autor: term
     } 
   

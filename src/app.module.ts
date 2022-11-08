@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BooksModule } from './books/books.module';
 import { CommonModule } from './common/common.module';
+import { AuthBooksModule } from './auth_books/auth_books.module';
 
 
 @Module({
@@ -22,7 +23,9 @@ import { CommonModule } from './common/common.module';
 
     BooksModule,
 
-    CommonModule
+    CommonModule,
+
+    AuthBooksModule
 
 ],
 })
