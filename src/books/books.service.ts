@@ -7,6 +7,7 @@ import { Book } from './entities/book.entity';
 import { PaginationDto } from '../common/dtos/pagination.dto';
 
 import { validate as isUUID } from 'uuid';
+import { User } from 'src/auth_books/entities/user_book.entity';
 
 @Injectable()
 export class BooksService {
@@ -27,6 +28,8 @@ export class BooksService {
     try {
 
       const Book = this.bookRepository.create(createBookDto);
+
+      
       await this.bookRepository.save( Book );
 
       return Book;

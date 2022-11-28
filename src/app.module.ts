@@ -5,7 +5,6 @@ import { BooksModule } from './books/books.module';
 import { CommonModule } from './common/common.module';
 import { AuthBooksModule } from './auth_books/auth_books.module';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -19,14 +18,13 @@ import { AuthBooksModule } from './auth_books/auth_books.module';
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
       synchronize: true,
-  }),
+    }),
 
     BooksModule,
 
     CommonModule,
 
-    AuthBooksModule
-
-],
+    AuthBooksModule,
+  ],
 })
-  export class AppModule {}
+export class AppModule {}
