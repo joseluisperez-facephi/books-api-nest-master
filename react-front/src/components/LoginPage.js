@@ -1,5 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import axios from 'axios';
+import { tokenToString } from "typescript";
+
 
 const baseURL = "http://localhost:8083/api/auth-books/login"
 
@@ -20,6 +22,29 @@ class Login extends Component {
       }
     });
     console.log(this.state.form)
+  }
+
+  iniciarSesion = async () => {
+    await axios.post(baseURL, { email: this.state.form.email, password: ( this.state.form.password )})
+    .then(response => {
+      console.log(response.data);
+      return(response.data);
+    })
+    .then(response => {
+      if (response.token){
+
+        alert(`Bienvenido aventurero con email ${response.email}`);
+        window.location.href="/api/books";
+
+      }else{
+        alert(' El usuario o la contraseña no es correcto')
+      }
+    
+    })
+    .catch( error => {
+      console.log( error );
+      alert(' Hubo un problema desconocido')
+    })
   }
 
   render() {
@@ -46,7 +71,7 @@ class Login extends Component {
               onChange={this.handleChange}
             />
             <br />
-            <button className="btn btn-primary">Iniciar Sesión</button>
+            <button className="btn btn-primary" onClick= {()=> this.iniciarSesion()}>Iniciar Sesión</button>
           </div>
         </div>
       </div>

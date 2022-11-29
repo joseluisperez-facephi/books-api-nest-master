@@ -32,18 +32,19 @@ export default function SearchdBooks() {
   }
   // Filtra la busqueda
   const filtrar = (terminoBusqueda) => {
+    const patternBusqueda = new RegExp(terminoBusqueda, "i");   //sensitive
 
-    let resultadosBusqueda = tablaBooks.filter((elemento) => {
-      if (elemento.autor.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-        || elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-        || elemento.id.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-        || elemento.editorial.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-        || elemento.isbn.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-      ) {
-        return elemento;
-      }
-
-    })
+    let resultadosBusqueda = tablaBooks.filter((elemento) => // Expresion regular que mejora la búsqueda
+      Object.values(elemento).find((value) => 
+          value && value.toString().match(patternBusqueda)))
+      // if (elemento.autor.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+      //   || elemento.titulo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+      //   || elemento.id.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+      //   || elemento.editorial.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+      //   || elemento.isbn.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+      // ) {
+      //   return elemento;
+      // }
     setBooks(resultadosBusqueda);
   }
 
