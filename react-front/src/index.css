@@ -20,7 +20,7 @@ code {
     border-radius: 5px;
     padding: 40px;
     color: white;
-    background-image: linear-gradient(135deg, hsl(222, 33%, 48%),hsl(244, 42%, 24%));
+    background-image: linear-gradient(145deg, hsl(222, 33%, 52%),hsl(244, 42%, 24%));
     
 }
 
@@ -44,4 +44,7 @@ body {
   background-image: url("/Users/joseluisperezpena/Desktop/facephi-wallpaper-light-1.jpg");
 }
 
+.table.table-sm.table-borderer{
 
+  background-color: white;
+}

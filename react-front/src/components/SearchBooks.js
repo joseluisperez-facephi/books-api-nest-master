@@ -4,7 +4,7 @@ import axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-export default function SearchdBooks() {
+export default function SearchBooks() {
 
   const [books, setBooks] = useState([]);
   const [tablaBooks, setTablaBooks] = useState([])
@@ -32,9 +32,9 @@ export default function SearchdBooks() {
   }
   // Filtra la busqueda
   const filtrar = (terminoBusqueda) => {
-    const patternBusqueda = new RegExp(terminoBusqueda, "i");   //sensitive
+    const patternBusqueda = new RegExp(terminoBusqueda, "i");   //sensitive, Expresion regular que mejora la búsqueda
 
-    let resultadosBusqueda = tablaBooks.filter((elemento) => // Expresion regular que mejora la búsqueda
+    let resultadosBusqueda = tablaBooks.filter((elemento) => 
       Object.values(elemento).find((value) => 
           value && value.toString().match(patternBusqueda)))
       // if (elemento.autor.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
@@ -56,7 +56,7 @@ export default function SearchdBooks() {
 
 
     <Box>
-      <AppBar position='relative' color='transparent'>
+      <AppBar position='relative'>
 
       </AppBar>
 

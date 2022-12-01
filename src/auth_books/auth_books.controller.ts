@@ -23,6 +23,7 @@ export class AuthBooksController {
 
   @Post('register')
   createUser(@Body() CreateUserDto: CreateUserDto) {
+    console.log(CreateUserDto)
     return this.authBooksService.create( CreateUserDto);
   }
 

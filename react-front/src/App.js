@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import  LoginPage  from './components/LoginPage'
 import  SearchBooks  from './components/SearchBooks'
 import  NavBar from "./components/NavBar";
-
+import RegisterPage from "./components/RegisterPage";
 
 export default function App() {
 
@@ -22,7 +22,8 @@ export default function App() {
       <Container>
       <Routes>
         <Route path="/" exact element={<LoginPage /> } />
-        <Route path="/api/books" element={<SearchBooks /> } />
+        <Route path="/api/auth-books/register" exact element={<RegisterPage /> } />
+        <Route path="/api/books" exact element={<SearchBooks /> } />
       </Routes>
       </Container>
     </BrowserRouter>

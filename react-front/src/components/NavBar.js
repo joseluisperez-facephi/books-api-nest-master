@@ -11,7 +11,7 @@ export default function NavBar() {
           <Container>
             <Toolbar>
                 <Typography sx={{ flexGrow: 1 }}>
-                  <Link to="/"> INICIO </Link >
+                  <Link to="/"> SALIR </Link >
                 </Typography>
 
               
