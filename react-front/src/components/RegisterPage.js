@@ -44,6 +44,7 @@ class RegisterPage extends Component {
                 } else {
                     alert(' El usuario o la contraseña no es correcto')
                 }
+                
 
             })
             .catch(error => {
@@ -55,7 +56,6 @@ class RegisterPage extends Component {
                 }
             })
   }
-
 
 
 
