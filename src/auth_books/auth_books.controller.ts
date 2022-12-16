@@ -63,7 +63,7 @@ testingPrivateRoute(
 //@SetMetadata('roles', ['admin', 'superUser'])
 
 @Get('private2')
-@RoleProtected( ValidRoles.superUser, ValidRoles.admin, ValidRoles.user )
+// @RoleProtected( ValidRoles.superUser, ValidRoles.admin, ValidRoles.user )
 @UseGuards( AuthGuard(), UserRoleGuard)
 privateRoute2(
   @GetUser() user: User

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import {  Container } from "@mui/material";
-import { useEffect, useState } from "react";
+// import {  useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import  LoginPage  from './components/LoginPage'
@@ -10,9 +10,9 @@ import RegisterPage from "./components/RegisterPage";
 
 export default function App() {
 
-  const [ books, setBooks ] = useState([]);
-  const [ tablaBooks, setTablaBooks ] = useState([])
-  const [ busqueda, setBusqueda ] = useState("");
+  // const [ books, setBooks ] = useState([]);
+  // const [ tablaBooks, setTablaBooks ] = useState([])
+  // const [ busqueda, setBusqueda ] = useState("");
 
 
   return (

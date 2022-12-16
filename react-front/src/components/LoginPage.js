@@ -15,7 +15,7 @@ class Login extends Component {
   }
   handleChange = async e => {
     console.log(e.target)
-    await this.setState({
+    this.setState({
       form: {
         ...this.state.form,
         [e.target.name]: e.target.value,
