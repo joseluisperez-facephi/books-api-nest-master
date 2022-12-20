@@ -4,10 +4,12 @@ on:
   push:
     branches: 
       - JoseLuis
-
+  pull_request:
+    branches:
+      - JoseLuis
 jobs:
     libraryBooks:
-      runs-on: macOs-12.5.1
+      runs-on: ubuntu-22.04
       steps: 
         - name: Echo the message
           run: |
