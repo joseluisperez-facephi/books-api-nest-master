@@ -43,7 +43,7 @@ class Login extends Component {
       })
       .catch(error => {
         console.log(error);
-        alert(' Hubo un problema desconocido')
+        alert(' Introduce bien los datos, bobo')
       })
   }
 

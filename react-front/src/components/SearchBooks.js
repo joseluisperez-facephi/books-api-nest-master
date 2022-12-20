@@ -30,6 +30,8 @@ export default function SearchBooks() {
 
     setBusqueda(e.target.value);
     filtrar(e.target.value);
+
+    
   }
   // Filtra la busqueda
   const filtrar = (terminoBusqueda) => {
