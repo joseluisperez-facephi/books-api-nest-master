@@ -11,3 +11,7 @@ on:
 jobs:
   hello-wordl:
     runs-on: ubuntu-22.04          
+    steps:
+      - name: Echo the message
+        run: |
+          echo "hazlo!"
