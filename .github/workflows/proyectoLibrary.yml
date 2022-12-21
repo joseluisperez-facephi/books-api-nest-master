@@ -9,9 +9,17 @@ on:
       - master
 
 jobs:
-  hello-wordl:
+  deploy:
     runs-on: ubuntu-22.04          
     steps:
-      - name: Echo the message
-        run: |
-          echo "hazlo!"
+      - uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.17.1'
+      - name: Install dependencies
+        run:  yarn Install
+      - name: Lint
+        run: yarn run eslint
+          
