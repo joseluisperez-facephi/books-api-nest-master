@@ -9,5 +9,5 @@ on:
       - master
 
 jobs:
-  hello wordl:
+  hello-wordl:
     runs-on: ubuntu-22.04          
