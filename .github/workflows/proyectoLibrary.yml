@@ -31,7 +31,7 @@ jobs:
       
 
   TestE2e:
-    needs: [Dependencias]
+    needs: [deploy]
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -39,7 +39,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 16.17.1
           cache: yarn
       - name: Installs dependencias
         run: yarn --frozen-lockfile
