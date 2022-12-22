@@ -23,6 +23,29 @@ jobs:
       - name: Lint
         run: yarn run eslint
       - name: Build
-        run: yarn run build
-      - name: Test
-        run: yarn test
+        run: yarn build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist  
+      
+
+  TestE2e:
+    needs: [Dependencias]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+      - name: Installs dependencias
+        run: yarn --frozen-lockfile
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+      - name: TEST e2e 
+        run: yarn test    
