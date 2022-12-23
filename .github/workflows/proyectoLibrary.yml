@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-22.04
     env: 
       DB_NAMETESTS: testContainer
-      DB_PORT_TEST: 5433
+      DB_PORT_TEST: 5432
       DB_USERNAME: ${DB_USERNAME}
       DB_HOST: localhost
       DB_PASSWORD: ${DB_PASSWORD}
