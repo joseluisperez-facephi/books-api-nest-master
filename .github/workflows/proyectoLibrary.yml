@@ -59,7 +59,7 @@ jobs:
       DB_USERNAME: ${DB_USERNAME}
       DB_HOST: localhost
       DB_PASSWORD: ${DB_PASSWORD}
-      JWT_SECRET: Est3EsMISE3Dsecret321
+      
     steps:
       - uses: actions/checkout@v3
         with:
