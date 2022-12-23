@@ -5,9 +5,11 @@ import { JwtModule } from '@nestjs/jwt';
 
 import { AuthBooksService } from './auth_books.service';
 import { AuthBooksController } from './auth_books.controller';
-import { User } from './entities/user_book.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './strategies/jwt.strategy';
+
+import { User } from './entities/user_book.entity';
+import { BooksModule } from 'src/books/books.module';
 
 
 @Module({

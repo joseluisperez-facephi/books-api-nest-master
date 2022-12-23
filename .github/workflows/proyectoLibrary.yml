@@ -1,0 +1,64 @@
+name: Books
+
+on:
+  push:
+    branches:
+      - JoseLuis
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04          
+    steps:
+      - uses: actions/checkout@v3
+        with: 
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.17.1'
+      - name: Install dependencies
+        run:  yarn install --frozen-lockfile
+      - name: Lint
+        run: yarn run eslint
+      - name: Build
+        run: yarn build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist  
+      
+    
+
+  TestsContainer: 
+    needs: [deploy]
+    runs-on: ubuntu-22.04
+    env: 
+      DB_NAME_TEST: db_test
+      DB_PORT_TEST: 5433
+      DB_USERNAME: postgres
+      DB_HOST: localhost
+      DB_PASSWORD: admin
+      JWT_SECRET: ${{secrets.JWT_SECRET}}
+      
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.17.1
+          cache: yarn
+      - name: Install dependencias
+        run: yarn --frozen-lockfile
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+      - name: TEST CONTAINER
+        run: yarn test:container      
+
+
+      
+    
