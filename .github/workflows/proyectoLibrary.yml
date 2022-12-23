@@ -48,4 +48,35 @@ jobs:
           name: dist
           path: dist
       - name: TEST e2e 
-        run: yarn test    
+        run: yarn test:e2e    
+
+  TestsContainer: 
+    needs: [deploy]
+    runs-on: ubuntu-22.04
+    env: 
+      DB_NAMETESTS: testContainer
+      DB_PORT_TEST: 5433
+      DB_USERNAME: ${DB_USERNAME}
+      DB_HOST: localhost
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: Est3EsMISE3Dsecret321
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.17.1
+          cache: yarn
+      - name: Install dependencias
+        run: yarn --frozen-lockfile
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+      - name: TEST CONTAINER
+        run: yarn test:container      
+
+
+      
+    
