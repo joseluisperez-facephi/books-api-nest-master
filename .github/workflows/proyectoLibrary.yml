@@ -12,10 +12,10 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04          
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with: 
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.17.1'
       - name: Install dependencies
@@ -29,36 +29,18 @@ jobs:
           name: dist
           path: dist  
       
-
-  TestE2e:
-    needs: [deploy]
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.17.1
-          cache: yarn
-      - name: Installs dependencias
-        run: yarn --frozen-lockfile
-      - uses: actions/download-artifact@v3
-        with:
-          name: dist
-          path: dist
-      - name: TEST e2e 
-        run: yarn test:e2e    
+    
 
   TestsContainer: 
     needs: [deploy]
     runs-on: ubuntu-22.04
     env: 
-      DB_NAMETESTS: testContainer
-      DB_PORT_TEST: 5432
-      DB_USERNAME: ${DB_USERNAME}
+      DB_NAME_TEST: db_test
+      DB_PORT_TEST: 5433
+      DB_USERNAME: postgres
       DB_HOST: localhost
-      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PASSWORD: admin
+      JWT_SECRET: ${{secrets.JWT_SECRET}}
       
     steps:
       - uses: actions/checkout@v3
