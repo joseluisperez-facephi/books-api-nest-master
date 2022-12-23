@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '16.17.1'
       - name: Install dependencies
-        run:  yarn install --no audit --no fund --no-optional
+        run:  yarn install --frozen-lockfile
       - name: Lint
         run: yarn run eslint
       - name: Build
