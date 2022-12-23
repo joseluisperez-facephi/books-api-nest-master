@@ -34,11 +34,11 @@ export default () => {
   describe('/book (GET) findByAutor', () => {
     it('OK (Happy Path)', async () => {
       const response = await request(app.getHttpServer()).get(
-        '/books/Raimundo Colorado Pelado',
+        '/books/Carlos Pérez Tumbado',
       );
 
       expect(response.statusCode).toBe(200);
-      expect(response.body.id).toBe('5042d3cd-c100-4a0c-9693-5a62d73b3c4f');
+      expect(response.body.id).toBe('5a7d0029-6e12-46e0-ae3a-4f0f8c1002a4');
     });
 
     it('ERR Not found Author', async () => {
@@ -80,7 +80,7 @@ export default () => {
         .post('/books')
         .send({
           titulo: 'PRUEBACA',
-          isbn: '55555wr6-00f0-00b0-x000-00000e5306b0',
+          isbn: '34238xx9-80f0-44b6-x778-14617e5306c1',
           resumen: 'Nunca hubo uno pero seguimos estudiandolos 2',
           autor: 'Raimundo Colorado Pelado',
           editorial: 'PAPAYA',
@@ -94,7 +94,7 @@ export default () => {
       expect(response.body).toEqual({
         statusCode: 400,
         message:
-          'Key (isbn)=(00000ws9-00f0-00b0-x000-00000e5306c1) already exists.',
+          'Key (isbn)=(34238xx9-80f0-44b6-x778-14617e5306c1) already exists.',
         error: 'Bad Request',
       });
     });
@@ -103,7 +103,7 @@ export default () => {
   describe('/book (DELETE) delete', () => {
     it('OK (Happy Path)', async () => {
       const response = await request(app.getHttpServer()).delete(
-        '/books/29207054-97a6-4be6-94d2-1f4cf2f19cd5',
+        '/books/88329128-e661-495e-bade-4b8406a9451b',
       );
 
       expect(response.statusCode).toBe(200);
@@ -127,14 +127,14 @@ export default () => {
   describe('/:id (PATCH) update', () => {
     it('OK (Happy Path)', async () => {
       const response = await request(app.getHttpServer()).patch(
-        '/books/3dce9da1-482c-4e41-9f42-afa545a089d0',
+        '/books/5a7d0029-6e12-46e0-ae3a-4f0f8c1002a4',
       ).send({ 
-        isbn: "00000xx9-80f0-44b6-x778-14617e5306c1",
+        isbn: "32238xx9-80f0-44b6-x778-14617e5306c1",
         editorial: "Ed Papata"});
 
         console.log(response.body)
       expect(response.statusCode).toBe(200);
-      expect(response.body.isbn).toEqual("00000xx9-80f0-44b6-x778-14617e5306c1");
+      expect(response.body.isbn).toEqual("32238xx9-80f0-44b6-x778-14617e5306c1");
       expect(response.body.editorial).toEqual("Ed Papata");
     });
 
@@ -158,11 +158,11 @@ export default () => {
   describe('/:term (GET) findOne', () => {
     it('OK (Happy Path)', async () => {
       const response = await request(app.getHttpServer()).get(
-        '/books/5042d3cd-c100-4a0c-9693-5a62d73b3c4f',
+        '/books/ba50fb54-3c03-4db9-8b8c-1264cf337a0f',
       );
 
       expect(response.statusCode).toBe(200);
-      expect(response.body.id).toEqual('162f6338-ecad-4270-8985-e7f300006e98');
+      expect(response.body.id).toEqual('ba50fb54-3c03-4db9-8b8c-1264cf337a0f');
     });
 
     it('ERR Not found BookID', async () => {
